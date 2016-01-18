@@ -24,5 +24,8 @@ RUN apk add --update python py-pip \
 # Define volumes
 VOLUME /etc/flexget
 
+# Set working directory
+WORKDIR /etc/flexget
+
 # Default command
 CMD ["flexget", "-c", "/etc/flexget/config.yml", "daemon", "start"]
