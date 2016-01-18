@@ -17,7 +17,7 @@ RUN apk add --update ca-certificates tar wget \
 
 # Install dependencies
 RUN apk add --update python py-pip \
-    && pip install --no-cache-dir paver \
+    && pip install --no-cache-dir paver transmissionrpc \
     && pip install --no-cache-dir -e /opt/flexget \
     && rm -rf /var/cache/apk/*
 
