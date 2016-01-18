@@ -8,13 +8,16 @@ Docker container for Flexget client.
 
 ### Running the container
 
-First create a data-only container to hold the persistent config data:
+Place your Flexget [configuration file](http://flexget.com/wiki/Configuration) in a directory on
+your host file system (i.e. `/srv/flexget`) with the name `config.yml`. Then run the Flexget client:
 
-    docker create --name flexget-data phlak/flexget echo "Data-only container for Flexget client"
+    docker run -d -v /srv/flexget:/etc/flexget --name flexget-client phlak/flexget
 
-Then run the Flexget client:
 
-    docker run -d -v /local/dir:/etc/flexget --volumes-from flexget-data --restart=always --name flexget-client phlak/flexget
+##### Optional 'docker run' Arguments
+
+`--restart always` - Always restart the container regardless of the exit status. See the Docker
+                     [restart policies](https://goo.gl/OI87rA) for additional details.
 
 
 -----
