@@ -28,4 +28,4 @@ VOLUME /etc/flexget
 WORKDIR /etc/flexget
 
 # Default command
-CMD ["flexget", "-c", "/etc/flexget/config.yml", "daemon", "start"]
+CMD ["flexget", "-c", "/etc/flexget/config.yml", "--loglevel", "verbose", "daemon", "start"]
