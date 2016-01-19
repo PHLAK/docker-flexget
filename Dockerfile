@@ -7,10 +7,6 @@ ENV FLEXGET_VERSION 1.2.430
 # Create Flexget directories
 RUN mkdir -pv /opt/flexget /etc/flexget
 
-# Add timezone script
-COPY files/timezone /bin/timezone
-RUN chmod +x /bin/timezone
-
 # Set Flexget archive URL
 ENV TARBALL_URL https://api.github.com/repos/flexget/flexget/tarball/${FLEXGET_VERSION}
 
