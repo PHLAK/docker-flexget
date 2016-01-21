@@ -1,7 +1,7 @@
 docker-flexget
 ==============
 
-Docker container for Flexget client.
+Docker image for Flexget client.
 
 [![](https://badge.imagelayers.io/phlak/flexget:latest.svg)](https://imagelayers.io/?images=phlak/flexget:latest 'Get your own badge on imagelayers.io')
 
