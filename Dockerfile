@@ -16,10 +16,10 @@ RUN apk add --update ca-certificates tar wget \
     && apk del tar wget && rm -rf /var/cache/apk/*
 
 # Install dependencies
-RUN apk add --update gcc musl-dev python-dev py-pip \
+RUN apk add --update python-dev py-pip \
     && pip install --no-cache-dir paver transmissionrpc \
     && pip install --no-cache-dir -e /opt/flexget \
-    && apk del --purge gcc musl-dev && rm -rf /var/cache/apk/*
+    && rm -rf /var/cache/apk/*
 
 # Define volumes
 VOLUME /etc/flexget
