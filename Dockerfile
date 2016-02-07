@@ -2,7 +2,7 @@ FROM alpine:3.3
 MAINTAINER Chris Kankiewicz <Chris@ChrisKankiewicz.com>
 
 # Define Flexget version
-ENV FLEXGET_VERSION 1.2.439
+ENV FLEXGET_VERSION 1.2.448
 
 # Create Flexget directories
 RUN mkdir -pv /opt/flexget /etc/flexget
@@ -13,7 +13,7 @@ ENV TARBALL_URL https://api.github.com/repos/flexget/flexget/tarball/${FLEXGET_V
 # Download and extract Flexget archive
 RUN apk add --update ca-certificates tar wget \
     && wget -qO- ${TARBALL_URL} | tar -xz --strip-components=1 -C /opt/flexget \
-    && apk del tar wget && rm -rf /var/cache/apk/*
+    && apk del --purge tar wget && rm -rf /var/cache/apk/*
 
 # Install dependencies
 RUN apk add --update python-dev py-pip \
