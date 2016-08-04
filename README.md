@@ -3,7 +3,7 @@ docker-flexget
 
 Docker image for Flexget client.
 
-[![](https://badge.imagelayers.io/phlak/flexget:latest.svg)](https://imagelayers.io/?images=phlak/flexget:latest 'Get your own badge on imagelayers.io')
+[![](https://images.microbadger.com/badges/image/phlak/flexget.svg)](http://microbadger.com/#/images/phlak/flexget "Get your own image badge on microbadger.com")
 
 
 ### Running the container
