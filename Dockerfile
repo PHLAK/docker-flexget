@@ -7,19 +7,26 @@ ENV FLEXGET_VERSION 2.7.0
 # Create Flexget directories
 RUN mkdir -pv /opt/flexget /etc/flexget
 
+# Create non-root user
+RUN adduser -DHs /sbin/nologin flexget
+
 # Set Flexget archive URL
 ENV TARBALL_URL https://api.github.com/repos/flexget/flexget/tarball/${FLEXGET_VERSION}
 
-# Download and extract Flexget archive
-RUN apk add --update ca-certificates tar wget \
+# Download and extract Flexget archive and chown files
+RUN apk add --update ca-certificates tar tzdata wget \
     && wget -qO- ${TARBALL_URL} | tar -xz --strip-components=1 -C /opt/flexget \
-    && apk del --purge tar wget && rm -rf /var/cache/apk/*
+    && apk del --purge tar wget && rm -rf /var/cache/apk/* \
+    && chown -R flexget:flexget /etc/flexget /opt/flexget
 
 # Install dependencies
 RUN apk add --update python-dev py-pip \
     && pip install --no-cache-dir paver transmissionrpc \
     && pip install --no-cache-dir -e /opt/flexget \
     && rm -rf /var/cache/apk/*
+
+# Set running user
+USER flexget
 
 # Define volumes
 VOLUME /etc/flexget
