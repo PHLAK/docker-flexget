@@ -2,7 +2,7 @@ FROM alpine:3.4
 MAINTAINER Chris Kankiewicz <Chris@ChrisKankiewicz.com>
 
 # Define Flexget version
-ENV FLEXGET_VERSION 2.8.8
+ENV FLEXGET_VERSION 2.8.10
 
 # Create Flexget directories
 RUN mkdir -pv /opt/flexget /etc/flexget
