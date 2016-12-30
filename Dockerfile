@@ -2,7 +2,7 @@ FROM alpine:3.5
 MAINTAINER Chris Kankiewicz <Chris@ChrisKankiewicz.com>
 
 # Define Flexget version
-ENV FLEXGET_VERSION 2.8.14
+ARG FLEXGET_VERSION=2.8.14
 
 # Create Flexget directories
 RUN mkdir -pv /opt/flexget /etc/flexget
@@ -11,7 +11,7 @@ RUN mkdir -pv /opt/flexget /etc/flexget
 RUN adduser -DHs /sbin/nologin flexget
 
 # Set Flexget archive URL
-ENV TARBALL_URL https://api.github.com/repos/flexget/flexget/tarball/${FLEXGET_VERSION}
+ARG TARBALL_URL=https://api.github.com/repos/flexget/flexget/tarball/${FLEXGET_VERSION}
 
 # Download and extract Flexget archive and chown files
 RUN apk add --update ca-certificates tar tzdata wget \
