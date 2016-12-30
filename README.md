@@ -15,7 +15,7 @@ volume where your config data will be stored. This is not required but is _highl
 
 Next you _must_ create your [config file] (http://flexget.com/wiki/Configuration):
 
-    docker run -it --rm -v flexget-data:/mnt phlak/flexget vi /mnt/config.yml
+    docker run -it --rm -v flexget-data:/etc/flexget phlak/flexget vi /etc/flexget/config.yml
 
 After the config file has been created run the client container with the named data volume:
 
