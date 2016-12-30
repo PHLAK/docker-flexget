@@ -20,9 +20,9 @@ RUN apk add --update ca-certificates tar tzdata wget \
     && chown -R flexget:flexget /etc/flexget /opt/flexget
 
 # Install dependencies
-RUN apk add --update python-dev py-pip \
-    && pip install --no-cache-dir paver transmissionrpc \
-    && pip install --no-cache-dir -e /opt/flexget \
+RUN apk add --update python3-dev \
+    && pip3 install --no-cache-dir paver transmissionrpc \
+    && pip3 install --no-cache-dir -e /opt/flexget \
     && rm -rf /var/cache/apk/*
 
 # Set running user
