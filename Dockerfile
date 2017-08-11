@@ -2,7 +2,7 @@ FROM alpine:3.6
 MAINTAINER Chris Kankiewicz <Chris@ChrisKankiewicz.com>
 
 # Define Flexget version
-ARG FLEXGET_VERSION=2.10.76
+ARG FLEXGET_VERSION=2.10.77
 
 # Create Flexget directories
 RUN mkdir -pv /opt/flexget /etc/flexget
