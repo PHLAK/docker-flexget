@@ -7,6 +7,9 @@ ARG FLEXGET_VERSION=3.0.13
 # Create Flexget directories
 RUN mkdir -pv /opt/flexget /etc/flexget
 
+# Copy entrypoint script into image
+COPY files/entrypoint.sh /opt/flexget/entrypoint.sh
+
 # Create non-root user
 RUN adduser -DHs /sbin/nologin flexget
 
@@ -33,6 +36,9 @@ VOLUME /etc/flexget
 
 # Set working directory
 WORKDIR /opt/flexget
+
+# Default entrypoint
+ENTRYPOINT ["/opt/flexget/entrypoint.sh"]
 
 # Default command
 CMD ["flexget", "-c", "/etc/flexget/config.yml", "--loglevel", "verbose", "daemon", "start"]
