@@ -5,4 +5,4 @@ build:
 	@docker build --force-rm --pull --tag $(IMAGE_NAME):$(IMAGE_TAG) .
 
 purge:
-	@docker rmi --force $(IMAGE_NAME):$(IMAGE_TAG)
+	@docker image rm --force $(IMAGE_NAME):$(IMAGE_TAG)
