@@ -17,6 +17,18 @@ Next you _must_ create your [config file](http://flexget.com/wiki/Configuration)
 
     docker run -it --rm -v flexget-data:/etc/flexget phlak/flexget vi /etc/flexget/config.yml
 
+<details>
+    <summary>Example config</summary>
+
+    tasks:
+    test task:
+        rss: http://mysite.com/myfeed.rss
+        series:
+        - My Favorite Show
+        - Another Good Show:
+            quality: 720p
+</details>
+
 After the config file has been created run the client container with the named data volume:
 
     docker run -d -v flexget-data:/etc/flexget --name flexget-client phlak/flexget
