@@ -1,5 +1,5 @@
 FROM alpine:3.10
-MAINTAINER Chris Kankiewicz <Chris@ChrisKankiewicz.com>
+LABEL maintainer="Chris Kankiewicz <Chris@ChrisKankiewicz.com>"
 
 # Define Flexget version
 ARG FLEXGET_VERSION=2.19.4
