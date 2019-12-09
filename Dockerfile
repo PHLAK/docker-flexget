@@ -32,7 +32,7 @@ USER flexget
 VOLUME /etc/flexget
 
 # Set working directory
-WORKDIR /etc/flexget
+WORKDIR /opt/flexget
 
 # Default command
 CMD ["flexget", "-c", "/etc/flexget/config.yml", "--loglevel", "verbose", "daemon", "start"]
