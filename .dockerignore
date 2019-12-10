@@ -1,4 +1,6 @@
 .git
-build.sh
+.editorconfig
+docker-flexget.png
 LICENSE
+Makefile
 README.md
