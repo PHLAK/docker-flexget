@@ -2,7 +2,7 @@ FROM alpine:3.11.5
 LABEL maintainer="Chris Kankiewicz <Chris@ChrisKankiewicz.com>"
 
 # Define Flexget version
-ARG FLEXGET_VERSION=3.0.13
+ARG FLEXGET_VERSION=3.1.47
 
 # Create Flexget directories
 RUN mkdir -pv /opt/flexget /etc/flexget
@@ -17,16 +17,17 @@ RUN adduser -DHs /sbin/nologin flexget
 ARG TARBALL_URL=https://api.github.com/repos/flexget/flexget/tarball/v${FLEXGET_VERSION}
 
 # Download and extract Flexget archive and chown files
-RUN apk add --update ca-certificates tar tzdata wget \
+RUN apk add --update ca-certificates  python3-dev tzdata \
+    && apk add --update --virtual extraction-deps tar wget \
     && wget -qO- ${TARBALL_URL} | tar -xz --strip-components=1 -C /opt/flexget \
-    && apk del --purge tar wget && rm -rf /var/cache/apk/* \
+    && apk del --purge extraction-deps && rm -rf /var/cache/apk/* \
     && chown -R flexget:flexget /etc/flexget /opt/flexget
 
 # Install dependencies
-RUN apk add --update python3-dev \
+RUN  apk add --update --virtual build-dependencies jpeg-dev gcc musl-dev zlib-dev \
     && pip3 install --no-cache-dir paver transmissionrpc \
     && pip3 install --no-cache-dir -e /opt/flexget \
-    && rm -rf /var/cache/apk/*
+    && apk del --purge build-dependencies && rm -rf /var/cache/apk/*
 
 # Set running user
 USER flexget
