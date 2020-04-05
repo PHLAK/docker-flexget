@@ -17,7 +17,7 @@ RUN adduser -DHs /sbin/nologin flexget
 ARG TARBALL_URL=https://api.github.com/repos/flexget/flexget/tarball/v${FLEXGET_VERSION}
 
 # Download and extract Flexget archive and chown files
-RUN apk add --update ca-certificates  python3-dev tzdata \
+RUN apk add --update ca-certificates python3-dev tzdata \
     && apk add --update --virtual extraction-deps tar wget \
     && wget -qO- ${TARBALL_URL} | tar -xz --strip-components=1 -C /opt/flexget \
     && apk del --purge extraction-deps && rm -rf /var/cache/apk/* \
