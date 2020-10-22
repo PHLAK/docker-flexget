@@ -1,4 +1,4 @@
-FROM alpine:3.11.5
+FROM alpine:3.12.0
 LABEL maintainer="Chris Kankiewicz <Chris@ChrisKankiewicz.com>"
 
 # Define Flexget version
@@ -24,9 +24,9 @@ RUN apk add --update ca-certificates python3-dev tzdata \
     && chown -R flexget:flexget /etc/flexget /opt/flexget
 
 # Install dependencies
-RUN  apk add --update --virtual build-dependencies jpeg-dev gcc musl-dev zlib-dev \
-    && pip3 install --no-cache-dir paver transmissionrpc \
-    && pip3 install --no-cache-dir -e /opt/flexget \
+RUN  apk add --update --virtual build-dependencies jpeg-dev gcc musl-dev py-pip zlib-dev \
+    && pip install --no-cache-dir paver transmissionrpc \
+    && pip install --no-cache-dir --ignore-installed six -e /opt/flexget \
     && apk del --purge build-dependencies && rm -rf /var/cache/apk/*
 
 # Set running user
