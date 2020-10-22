@@ -25,7 +25,7 @@ RUN apk add --update ca-certificates python3-dev tzdata \
 
 # Install dependencies
 RUN  apk add --update --virtual build-dependencies jpeg-dev gcc musl-dev zlib-dev \
-    && pip3 install --no-cache-dir paver transmissionrpc \
+    && pip3 install --no-cache-dir paver transmissionrpc deluge-client \
     && pip3 install --no-cache-dir -e /opt/flexget \
     && apk del --purge build-dependencies && rm -rf /var/cache/apk/*
 
